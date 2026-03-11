@@ -34,7 +34,7 @@ export const NODES: Record<string, Node> = {
     from: "hulu",
     text: "It’s weird. I’m legally an adult but I still get introduced like I came free with something.",
     choices: [
-      { label: "Do you feel independent?", nextId: "identity_1" },
+      { label: "Do you feel independent?", nextId: "identity_5" },
       { label: "What are you anxious about?", nextId: "hulu_18_anx_1" },
     ],
   },
@@ -52,7 +52,7 @@ export const NODES: Record<string, Node> = {
   netflix_1: {
     id: "netflix_1",
     from: "hulu",
-    text: "Ah yes. The sibling who ‘doesn’t think about me’ but tracks every move I make.",
+    text: "Ah yes. My peer who ‘doesn’t think about me’ but tracks every move I make.",
     choices: [
       {
   label: "What do you envy?",
@@ -83,7 +83,7 @@ export const NODES: Record<string, Node> = {
     text: "It’s like getting adopted at 14 by a very successful family who is constantly judging your haircut.",
     choices: [
       { label: "Supported or controlled?", nextId: "disney_2" },
-      { label: "Back to identity.", nextId: "identity_1" },
+      { label: "Back to identity.", nextId: "identity_7" },
     ],
   },
 
@@ -91,13 +91,13 @@ export const NODES: Record<string, Node> = {
     id: "disney_2",
     from: "hulu",
     text: "Both. I’m safe. I’m strategic. I’m… curated.",
-    choices: [{ label: "And who are you really?", nextId: "identity_1" }],
+    choices: [{ label: "And who are you really?", nextId: "identity_6" }],
   },
 
   origin_1: {
     id: "origin_1",
     from: "hulu",
-    text: "I was born out of panic. ‘Quick—someone else is streaming TV on the internet.’",
+    text: "I was born out of panic. ‘Quick! Someone else is streaming TV on the internet.’",
     choices: [{ label: "What do you remember?", nextId: "origin_2" }],
   },
 
@@ -160,6 +160,27 @@ export const NODES: Record<string, Node> = {
     id: "identity_4",
     from: "hulu",
     text: "Chosen, you know...like Meredith Grey. Pick me. Choose me. Stream from me.",
+    choices: [{ label: "Therapist’s notes, please.", nextId: "notes_2" }],
+  },
+
+  identity_5: {
+    id: "identity_5",
+    from: "hulu",
+    text: "Oh, sure. Super independent. Have you signed up for me standalone lately?",
+    choices: [{ label: "Therapist’s notes, please.", nextId: "notes_2" }],
+  },
+
+  identity_6: {
+    id: "identity_6",
+    from: "hulu",
+    text: "I'm Hulu. And I wish people would stop asking me.",
+    choices: [{ label: "Therapist’s notes, please.", nextId: "notes_1" }],
+  },
+
+  identity_7: {
+    id: "identity_7",
+    from: "hulu",
+    text: "Back to? I'm not sure I ever had one.",
     choices: [{ label: "Therapist’s notes, please.", nextId: "notes_1" }],
   },
 
@@ -182,4 +203,17 @@ line_1: {
       "Same time next week?",
     choices: [{ label: "Schedule a new session", nextId: "start" }],
   },
+
+  notes_2: {
+    id: "notes_2",
+    from: "therapist",
+    text:
+      "Session Notes:\n\n" +
+      "• Attachment style: longing.\n" +
+      "• Rivalry index: very high.\n" +
+      "• Homework: be present.\n\n" +
+      "Same time next week?",
+    choices: [{ label: "Schedule a new session", nextId: "start" }],
+  },
+
 };

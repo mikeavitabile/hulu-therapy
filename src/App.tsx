@@ -63,6 +63,29 @@ useEffect(() => {
 
   const nextNode = NODES[choice.nextId];
 
+  // If the next node is therapist, skip Hulu thinking and just show it
+if (nextNode.from === "therapist") {
+  const therapistMsg: ChatMessage = {
+    id: crypto.randomUUID(),
+    from: "therapist",
+    text: nextNode.text,
+    kind: "normal",
+  };
+
+  setMessages((prev) => [
+    ...prev,
+    {
+      id: crypto.randomUUID(),
+      from: "therapist",
+      text: choice.say ?? choice.label,
+    },
+    therapistMsg,
+  ]);
+
+  setCurrentId(choice.nextId);
+  return;
+}
+
   // 1) Therapist "says" the prompt the user clicked (spoken line)
   const therapistMsg: ChatMessage = {
     id: crypto.randomUUID(),
@@ -118,10 +141,6 @@ function updateMessage(id: string, patch: Partial<ChatMessage>) {
   setMessages((prev) =>
     prev.map((m) => (m.id === id ? { ...m, ...patch } : m))
   );
-}
-
-function removeMessage(id: string) {
-  setMessages((prev) => prev.filter((m) => m.id !== id));
 }
 
   return (
